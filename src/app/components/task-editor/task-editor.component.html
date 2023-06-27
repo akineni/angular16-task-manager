@@ -1,0 +1,10 @@
+<form class="d-flex justify-content-center align-items-center mb-4" autocomplete="off">
+    <div class="form-outline flex-fill">
+        <input type="text" name="task" id="form2" class="form-control" [(ngModel)]="task.task"/>
+        <label class="form-label" for="form2">New task...</label>
+    </div>
+    <div>
+        <input class="form-control" name="deadline" type="datetime-local" [(ngModel)]="task.deadline">
+    </div>
+    <button type="submit" class="btn btn-info ms-2" (click)="add()">Add</button>
+</form>

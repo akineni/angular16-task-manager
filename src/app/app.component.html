@@ -1,0 +1,19 @@
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+
+        <div class="card mb-5">
+          <div class="card-body p-5" *ngIf="authService.isLoggedIn(); else noUser">
+            <app-task-editor></app-task-editor>
+            <app-task-viewer></app-task-viewer>
+          </div>
+          <ng-template #noUser>
+            <app-auth></app-auth>            
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-pre-loader *ngIf="preLoader.isLoading()"></app-pre-loader>
