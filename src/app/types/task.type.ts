@@ -1,6 +1,6 @@
 export interface Task {
     id?: number,
     task: string,
-    completed?: boolean,
-    deadline?: Date
+    completed?: boolean | number,
+    deadline?: Date //Optional to allow 'undefined'
 }

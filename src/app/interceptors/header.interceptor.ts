@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment as env} from 'src/environments/environment.development';
+import { environment as env} from 'src/environments/environment';
 import {
   HttpRequest,
   HttpHandler,

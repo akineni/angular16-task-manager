@@ -58,7 +58,13 @@ import { AuthComponent } from './components/auth/auth.component';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              env.GOOGLE_PROVIDER_ID
+              env.GOOGLE_PROVIDER_ID, { oneTapEnabled: false }
+              /*oneTapEnabled: Disable popup mode.
+                Popup is showing even when user is loggedIn on app level and causing
+                abnormal behaviour on signOut.
+                
+                Could find a way to disable it when user is logged in (if possible)
+              */
             )
           },
           {

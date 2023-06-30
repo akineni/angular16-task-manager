@@ -9,7 +9,7 @@ import {
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
-import { environment as env } from 'src/environments/environment.development';
+import { environment as env } from 'src/environments/environment';
 import { AccessToken } from '../types/access-token.type';
 
 @Injectable()
@@ -36,6 +36,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
             }),
             catchError((refreshError: HttpErrorResponse) => {
               localStorage.clear();
+              console.log('refreshError');
               return throwError(refreshError);
             })
           );

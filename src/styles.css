@@ -34,3 +34,5 @@ body::-webkit-scrollbar-thumb
     background-clip: content-box;
 	background-color: #555;
 }
+
+.thin-header { font-weight: 100 }

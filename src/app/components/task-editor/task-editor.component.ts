@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PreLoaderService } from 'src/app/services/pre-loader.service';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/types/task.type';
@@ -9,27 +9,81 @@ import { Task } from 'src/app/types/task.type';
   styleUrls: ['./task-editor.component.css']
 })
 export class TaskEditorComponent {
-  task: Task = { task: '' };
+  /*
+    If we pass objects in @Input() decorator then it would be passed as reference,
+    and if we pass primitive types, then it would be passed as value.
+  */
+  // https://stackoverflow.com/questions/40260158/angular2-pass-by-reference-to-interact-between-components
+  // https://www.infragistics.com/community/blogs/b/infragistics/posts/angular-components-pass-by-reference-or-pass-by-value
+  
+  @Input() id?: number;
+  @Input() taskTask: string;
+  @Input() completed?: number | boolean;
+  @Input() deadline?: Date;
 
+  @Output() clearTaskEvent: EventEmitter<void> = new EventEmitter<void>();
+  
   constructor (
     public preLoader: PreLoaderService,
     public taskService: TaskService ) {}
 
   add(): void {
-    if(this.task.task && this.task.deadline){
-      if(new Date(this.task.deadline) > new Date()){
-        this.preLoader.enable('Adding task');
-        this.taskService.createTask(this.task).subscribe((t: Task) => {
-          this.taskService.tasks.push(t);
-          this.task = { task: '' };
-          this.preLoader.disable();
-        },
-        (error: any) => {      
-          this.preLoader.disable();
-        });
+    if(this.taskTask && this.deadline){      
+      if(new Date(this.deadline) > new Date()){
+        if(this.id)
+          this.update();
+        else{
+          this.preLoader.enable('Adding task');
+          this.taskService.createTask(this.createTask()).subscribe((t: Task) => {
+            this.taskService.tasks.push(t);
+            this.clearTask();
+            this.preLoader.disable();
+          },
+          () => {  // Error
+            this.preLoader.disable();
+          });
+        }
       }else
         alert('Deadline cannot be in the past');
     }else
       alert('Task and Deadline must not be empty.');
+  }
+
+  update(): void {
+    const taskUpdate: Task = this.createTask(this.id, this.completed);
+    this.preLoader.enable('Updating task');
+    this.taskService.updateTask(taskUpdate).subscribe((result: number) => {
+      if(result == 1) {
+        const index = this.taskService.tasks.findIndex(task => task.id == this.id);
+        this.taskService.tasks[index] = taskUpdate;
+        this.clearTask(true);
+      }      
+      this.preLoader.disable();
+    },
+    () => { // Error
+      this.preLoader.disable();
+    });
+  }
+
+  private createTask(id: number | undefined = undefined, completed: number | boolean | undefined = undefined): Task {
+    const task: Task = {
+      'task': this.taskTask,
+      'deadline': this.deadline
+    }
+    if(id) task.id = id;
+    if(completed !== undefined) task.completed = completed; //!== undefined: completed when false is 0
+    return task;
+  }
+
+  private clearTask(update: boolean = false): void {
+    if(update)
+      this.clearTaskEvent.emit(); // For update()
+    else {
+      // Clear local primitives for add()
+      this.taskTask = '';
+      this.id = undefined;
+      this.completed = undefined;
+      this.deadline = undefined;
+    }    
   }
 }

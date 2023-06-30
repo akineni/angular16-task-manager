@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from './services/task.service';
-import { SocialAuthService, SocialUser, FacebookLoginProvider } from "@abacritt/angularx-social-login";
+import { SocialAuthService } from "@abacritt/angularx-social-login";
 import { AuthService } from './services/auth.service';
 import { PreLoaderService } from './services/pre-loader.service';
+import { Task } from './types/task.type';
+import { environment as env} from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,7 @@ import { PreLoaderService } from './services/pre-loader.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-
-  title: string = 'TaskManager';
+  task: Task = { task: '' }; // Property is maintained here and passed to Child component <app-task-editor />
   
   constructor (
     public preLoader: PreLoaderService,
@@ -21,24 +22,23 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.authEvent.subscribe(() => {
-      this.taskService.getTasks();
+      /*if(!this.taskService.tasks) */this.taskService.getTasks();
     });
-
-    if(this.authService.isLoggedIn())
-      this.authService.authEvent.emit()
-    else {
-      this.socialAuthService.authState.subscribe((user: SocialUser) => {
-        this.authService.authenticate(user.idToken);
-      });
-    }
+        
+    if(this.authService.isLoggedIn()) this.authService.authEvent.emit();
   }
 
-  LogInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  receiveUpdate(event: Task): void {
+    this.task = event;
   }
 
+  clearTask(): void {
+    this.task = { task: '' };
+  }
+  
   signOut(): void {
-    this.socialAuthService.signOut();
+    localStorage.removeItem(env.local_storage_access_token_key);
+    if(this.authService.socialUser) this.socialAuthService.signOut();
   }
 
 }
