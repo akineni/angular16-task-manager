@@ -35,8 +35,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
               return next.handle(modifiedRequest);
             }),
             catchError((refreshError: HttpErrorResponse) => {
-              localStorage.clear();
-              console.log('refreshError');
+              this.authService.signOut();
               return throwError(refreshError);
             })
           );

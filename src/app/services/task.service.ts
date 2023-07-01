@@ -20,14 +20,13 @@ export class TaskService {
   getTasks(): void {
     this.preLoader.enable('Getting your tasks');
 
-    this.httpClient.get<Task[]>(env.backend_root + 'tasks')
-    .subscribe((tasks: Task[]) => {
-        this.tasks = tasks;
-        this.preLoader.disable();
-      },
-      (error: any) => {
-        this.preLoader.disable();
-      });
+    this.httpClient.get<Task[]>(env.backend_root + 'tasks').subscribe((tasks: Task[]) => {
+      this.tasks = tasks;
+      this.preLoader.disable();
+    },
+    () => { // error
+      this.preLoader.disable();
+    });
   }
 
   createTask(task: Task): Observable<Task> {
@@ -59,7 +58,7 @@ export class TaskService {
         this.tasks.splice(this.tasks.findIndex(task => task.id == taskId), 1);
         this.preLoader.disable();
       },
-      (error: any) => {
+      () => { // error
         this.preLoader.disable();
       });
   }

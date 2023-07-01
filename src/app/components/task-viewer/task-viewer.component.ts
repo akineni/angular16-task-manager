@@ -1,23 +1,36 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
-import { of } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Task } from 'src/app/types/task.type';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-task-viewer',
   templateUrl: './task-viewer.component.html',
   styleUrls: ['./task-viewer.component.css']
 })
-export class TaskViewerComponent {
+export class TaskViewerComponent implements OnInit{
   filterAttribute: string = 'completed';
   filterValue: any = '';
 
   @Output()
-  updateEvent: EventEmitter<Task> = new EventEmitter<Task>(); 
+  updateEvent: EventEmitter<Task> = new EventEmitter<Task>();
+
+  private authEventSubscription: Subscription;
   
   constructor (
-    public taskService: TaskService) {}
+    public taskService: TaskService,
+    private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authEventSubscription = this.authService.authEvent.subscribe(() => {
+      this.taskService.getTasks();
+    });
+    if(this.authService.isLoggedIn()){
+      this.authService.authEvent.emit();      
+    }
+  }    
 
   delete(taskId: number): void {
     this.taskService.deleteTask(taskId);
@@ -68,5 +81,11 @@ export class TaskViewerComponent {
 
   isPast(date: any): boolean {
     return new Date() > new Date(date);
+  }
+
+  ngOnDestroy(): void{
+    // Unsubscribe to avoid having multiple observers and executing multiple times
+    // https://blog.bitsrc.io/6-ways-to-unsubscribe-from-observables-in-angular-ab912819a78f?gi=8b1d3ff4c5a0
+    this.authEventSubscription.unsubscribe();
   }
 }

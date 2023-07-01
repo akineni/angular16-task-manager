@@ -81,9 +81,9 @@ export class TaskEditorComponent {
     else {
       // Clear local primitives for add()
       this.taskTask = '';
-      this.id = undefined;
-      this.completed = undefined;
-      this.deadline = undefined;
+      delete this.id;
+      delete this.completed;
+      delete this.deadline;
     }    
   }
 }
