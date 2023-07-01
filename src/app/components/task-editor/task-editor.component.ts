@@ -19,7 +19,7 @@ export class TaskEditorComponent {
   @Input() id?: number;
   @Input() taskTask: string;
   @Input() completed?: number | boolean;
-  @Input() deadline?: Date;
+  @Input() deadline?: string;
 
   @Output() clearTaskEvent: EventEmitter<void> = new EventEmitter<void>();
   

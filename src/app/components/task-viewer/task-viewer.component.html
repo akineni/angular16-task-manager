@@ -54,7 +54,7 @@
                     {{task.task}}
                 </span>
                 </td>
-                <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'medium'}}</td>
+                <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'E, MMM d, y, h:mm a'}}</td>
                 <td class="text-nowrap">
                     <i class="fa-solid fa-pen mx-1" role="button" title="Edit" (click)="update(task)"></i>
                     <!-- <i class="fa-solid fa-copy" role="button" title="Copy"></i> -->
