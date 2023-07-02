@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { PreLoaderService } from 'src/app/services/pre-loader.service';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/types/task.type';
@@ -22,10 +22,24 @@ export class TaskEditorComponent {
   @Input() deadline?: string;
 
   @Output() clearTaskEvent: EventEmitter<void> = new EventEmitter<void>();
+  @ViewChild('taskInput') taskInput: ElementRef;
   
   constructor (
     public preLoader: PreLoaderService,
     public taskService: TaskService ) {}
+
+  ngOnChanges(change: any): void {
+    // Tracking @input changes with ngOnChanges()
+    // https://stackoverflow.com/questions/38571812/how-to-detect-when-an-input-value-changes-in-angular
+    
+    // Make input label float when it receives a new value
+    if(this.taskInput){ // Avoid 'undefined' console error on page load       
+      if(change.taskTask.currentValue)
+        this.taskInput.nativeElement.classList.add('active');
+      else
+        this.taskInput.nativeElement.classList.remove('active');
+    }
+  }
 
   add(): void {
     if(this.taskTask && this.deadline){      
@@ -49,7 +63,7 @@ export class TaskEditorComponent {
       alert('Task and Deadline must not be empty.');
   }
 
-  update(): void {
+  private update(): void {
     const taskUpdate: Task = this.createTask(this.id, this.completed);
     this.preLoader.enable('Updating task');
     this.taskService.updateTask(taskUpdate).subscribe((result: number) => {
@@ -84,6 +98,8 @@ export class TaskEditorComponent {
       delete this.id;
       delete this.completed;
       delete this.deadline;
+      // Return input's floating label to its default position
+      this.taskInput.nativeElement.classList.remove('active');
     }    
   }
 }
