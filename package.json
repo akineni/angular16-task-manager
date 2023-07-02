@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --ssl true --ssl-key C:/Windows/System32/localhost-key.pem --ssl-cert C:/Windows/System32/localhost.pem",
+    "start": "ng serve -o --ssl true --ssl-key ./ssl/localhost-key.pem --ssl-cert ./ssl/localhost.pem",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
