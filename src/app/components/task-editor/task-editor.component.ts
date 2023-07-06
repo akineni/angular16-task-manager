@@ -89,7 +89,7 @@ export class TaskEditorComponent {
     return task;
   }
 
-  private clearTask(update: boolean = false): void {
+  clearTask(update: boolean = false): void {
     if(update)
       this.clearTaskEvent.emit(); // For update()
     else {
@@ -102,4 +102,11 @@ export class TaskEditorComponent {
       this.taskInput.nativeElement.classList.remove('active');
     }    
   }
-}
+
+  clear(): void {
+    if (this.id) { // Update
+      this.clearTask(true);
+    } else
+      this.clearTask();
+  }
+ }

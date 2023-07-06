@@ -9,5 +9,18 @@
         <input class="form-control" name="deadline" type="datetime-local" [(ngModel)]="deadline"
         [class.show-datetime-edit]="deadline">
     </div>
-    <button type="submit" class="btn btn-info ms-2" (click)="add()">{{id ? 'Update' : 'Add'}}</button>
+    <div class="btn-group ms-2">
+        <button type="submit" class="btn btn-info" (click)="add()"
+        [disabled]="preLoader.isLoading()">{{id ? 'Update' : 'Add'}}</button>
+        <button
+        type="button"
+        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+        data-mdb-toggle="dropdown"
+        aria-expanded="false">
+        <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+        <li><button class="dropdown-item" type="button" (click)="clear()">Clear</button></li>
+        </ul>
+    </div>
 </form>
