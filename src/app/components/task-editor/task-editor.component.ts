@@ -22,13 +22,13 @@ export class TaskEditorComponent {
   @Input() deadline?: string;
 
   @Output() clearTaskEvent: EventEmitter<void> = new EventEmitter<void>();
-  @ViewChild('taskInput') taskInput: ElementRef;
+  // @ViewChild('taskInput') taskInput: ElementRef;
   
   constructor (
     public preLoader: PreLoaderService,
     public taskService: TaskService ) {}
 
-  ngOnChanges(change: any): void {
+  /*ngOnChanges(change: any): void {
     // Tracking @input changes with ngOnChanges()
     // https://stackoverflow.com/questions/38571812/how-to-detect-when-an-input-value-changes-in-angular
     
@@ -39,7 +39,7 @@ export class TaskEditorComponent {
       else
         this.taskInput.nativeElement.classList.remove('active');
     }
-  }
+  }*/
 
   add(): void {
     if(this.taskTask && this.deadline){      
@@ -99,7 +99,7 @@ export class TaskEditorComponent {
       delete this.completed;
       delete this.deadline;
       // Return input's floating label to its default position
-      this.taskInput.nativeElement.classList.remove('active');
+      /*this.taskInput.nativeElement.classList.remove('active');*/
     }    
   }
 
