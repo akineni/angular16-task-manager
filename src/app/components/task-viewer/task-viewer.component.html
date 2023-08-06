@@ -1,0 +1,89 @@
+<!-- Tabs navs -->
+<ul class="nav nav-tabs nav-fill nav-justified mb-4 pb-2" id="ex1" role="tablist">
+
+    <li class="nav-item" role="presentation" (click)="filterBy()">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == ''}">
+            All
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{taskService.tasks.length}}
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item" role="presentation" (click)="filterBy('completed', '0')">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == '0'}">
+            Active
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: ['completed']: 0).length}}
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item" role="presentation" (click)="filterBy('completed', '1')">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == '1'}">
+            Completed
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: ['completed']: 1).length}}
+            </span>
+        </a>
+    </li>
+
+    <!-- <li class="nav-item" role="presentation" (click)="filterBy(filterValue === [] ? '' : 'id', getMissedTasks())">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterAttribute == 'id'}">
+            Missed
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: [filterValue === [] ? '' : 'id']: getMissedTasks()).length}}
+            </span>
+        </a>
+    </li> -->
+
+</ul>
+<!-- Tabs navs -->
+
+<!-- Tabs content -->
+<div class="tab-content" id="ex1-content">
+
+    <mdb-form-control class="mb-4">
+        <input mdbInput type="text" id="form20" class="form-control form-icon-trailing" [(ngModel)]="searchFilter"/>
+        <label mdbLabel class="form-label" for="form20">Search tasks</label>
+    </mdb-form-control>
+
+    <div class="tab-pane fade show active" role="tabpanel">
+
+        <div *ngIf="taskService.tasks && (taskService.tasks | filterByImpure: [filterAttribute]: filterValue | search: searchFilter).length == 0">
+            <h4 class="thin-header text-center my-3">No Task</h4>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-sm table-striped table-hover align-middle">
+                <tbody>
+                <tr *ngFor="let task of taskService.tasks | orderByImpure: ['completed', '-id'] | filterByImpure: [filterAttribute]: filterValue | search: searchFilter">                    
+                    
+                    <td>
+                        <input class="form-check-input me-2" type="checkbox" value="" aria-label="..."
+                        [checked]="task.completed" (change)="updateCompleted(task.id!, $event)" />
+                    </td>
+
+                    <td>
+                        <span [ngClass]="{'text-decoration-line-through': task.completed, 'text-danger': !task.completed && isPast(task.deadline)}">
+                            {{task.task}}
+                        </span>
+                    </td>
+
+                    <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'E, MMM d, y, h:mm a'}}</td>
+                    
+                    <td class="text-nowrap">
+                        <i class="fa-solid fa-pen mx-1" role="button" title="Edit" (click)="update(task)"></i>
+                        <i class="fa-solid fa-trash-can mx-1" role="button" title="Delete" (click)="delete(task.id!)"></i>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+<!-- Tabs content -->

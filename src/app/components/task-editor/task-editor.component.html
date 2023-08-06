@@ -1,0 +1,29 @@
+<form class="d-flex flex-wrap align-items-center mb-4" autocomplete="off">
+    
+    <mdb-form-control class="flex-grow-1">
+        <input mdbInput type="text" name="task" id="form2" class="form-control" [(ngModel)]="taskTask" 
+        #taskInput />
+        <label mdbLabel class="form-label" for="form2">New task...</label>
+    </mdb-form-control>
+
+    <div class="ms-2">
+        <input class="form-control" name="deadline" type="datetime-local" [(ngModel)]="deadline"
+        [class.show-datetime-edit]="deadline">
+    </div>
+
+    <div mdbDropdown class="btn-group ms-2">
+        <button type="submit" class="btn btn-info" (click)="add()"
+        [disabled]="preLoader.isLoading()">{{id ? 'Update' : 'Add'}}</button>
+        <button
+        type="button"
+        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+        mdbDropdownToggle
+        aria-expanded="false">
+        <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul mdbDropdownMenu class="dropdown-menu">
+            <li><button class="dropdown-item" type="button" (click)="clear()">Clear</button></li>
+        </ul>
+    </div>
+    
+</form>

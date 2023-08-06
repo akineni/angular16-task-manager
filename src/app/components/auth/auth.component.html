@@ -1,0 +1,21 @@
+<div class="card-body p-5">
+    <h3 class="text-center p-2">Hello, please identify yourself.</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+      <asl-google-signin-button type='standard' class="m-1"></asl-google-signin-button>
+      <!-- <div class="fb-login-button m-1" data-width="" data-size="medium" data-button-type=""
+      data-layout="" data-auto-logout-link="true" data-use-continue-as="false" data-max-rows="1"></div> -->
+      <!-- data-scope="email,name"-->
+
+      <!-- Facebook not working -->
+      
+      <button class="btn btn-primary btn-sm m-1" (click)="LogInWithFB()" aria-disabled="true" disabled>
+        <!-- The method FB.login can no longer be called from http pages.
+          https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/
+        -->
+        <!-- How to configure SSL locally in Angular? (This worked for me)
+          https://www.mariokandut.com/how-to-configure-https-ssl-in-angular/ -->
+        <i class="fa-brands fa-facebook"></i>
+        Login with Facebook
+      </button>
+    </div>
+</div>
