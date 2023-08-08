@@ -1,4 +1,4 @@
-<form class="d-flex flex-wrap align-items-center mb-4" autocomplete="off">
+<form class="d-flex gap-2 flex-wrap align-items-center justify-content-md-center mb-4" autocomplete="off">
     
     <mdb-form-control class="flex-grow-1">
         <input mdbInput type="text" name="task" id="form2" class="form-control" [(ngModel)]="taskTask" 
@@ -6,12 +6,12 @@
         <label mdbLabel class="form-label" for="form2">New task...</label>
     </mdb-form-control>
 
-    <div class="ms-2">
+    <div class="flex-grow-1 flex-sm-grow-0 mw-100">
         <input class="form-control" name="deadline" type="datetime-local" [(ngModel)]="deadline"
         [class.show-datetime-edit]="deadline">
     </div>
 
-    <div mdbDropdown class="btn-group ms-2">
+    <div mdbDropdown class="btn-group flex-grow-1 flex-md-grow-0">
         <button type="submit" class="btn btn-info" (click)="add()"
         [disabled]="preLoader.isLoading()">{{id ? 'Update' : 'Add'}}</button>
         <button
