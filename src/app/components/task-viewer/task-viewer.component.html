@@ -45,7 +45,7 @@
 
     <mdb-form-control class="mb-4">
         <input mdbInput type="text" id="form20" class="form-control form-icon-trailing" [(ngModel)]="searchFilter"/>
-        <label mdbLabel class="form-label" for="form20">Search tasks</label>
+        <label mdbLabel class="form-label" for="form20">Search for tasks</label>
     </mdb-form-control>
 
     <div class="tab-pane fade show active" role="tabpanel">
@@ -71,7 +71,7 @@
                         </span>
                     </td>
 
-                    <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'E, MMM d, y, h:mm a'}}</td>
+                    <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'E, MMM d, y, h:mm a' | temporalDeixis}}</td>
                     
                     <td class="text-nowrap">
                         <i class="fa-solid fa-pen mx-1" role="button" title="Edit" (click)="update(task)"></i>

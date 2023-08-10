@@ -1,30 +1,39 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { format, differenceInCalendarDays } from 'date-fns';
 
 @Pipe({
   name: 'temporalDeixis'
 })
 export class TemporalDeixisPipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): string {
-    const date: Date = new Date(value);
-    const diffDays: number = date.getDate() - new Date().getDate();
+  transform(value: string | null, ...args: unknown[]): string {
+    const date: Date = new Date(value!);
+    const now: Date = new Date();
+    const diffDays: number = differenceInCalendarDays(date, now);
 
     var temporalDeixis: string;
 
     if (diffDays == 0)
-      temporalDeixis = 'Today';
+      temporalDeixis = format(date, "hh:mm a");
     else if (diffDays == -1)
-      temporalDeixis = 'Yesterday';
+      temporalDeixis = format(date, "'Yesterday at' hh:mm a");
     else if (diffDays == 1)
-      temporalDeixis = 'Tomorrow';    
-    else if (diffDays > 1 && diffDays <= 7) { // Within a/the week
-      temporalDeixis = date.getDay().toString();
-    } else if (diffDays < -1 && diffDays >= -7) { // Within the past week
-        temporalDeixis = 'Last ' + date.getDay().toString();
-    } else if (diffDays > 7 && diffDays <= 14) // Next week
-        temporalDeixis = 'Next Week ' + date.getDay();
-    else
-      temporalDeixis = value;
+      temporalDeixis = format(date, "'Tomorrow at' hh:mm a");
+    else if (diffDays < -1 && diffDays >= -7) { // Within last 7 days
+        temporalDeixis = format(date, "'Last' EEEE 'at' hh:mm a");
+    } else if (diffDays > 1 && diffDays <= 7) { // Within the next 7 days
+      temporalDeixis = format(date, "EEEE 'at' hh:mm a");
+      // if (diffDays <= (6 - now.getDay())) {
+      //   temporalDeixis = format(date, "EEEE 'at' hh:mm a");
+      // } else {
+      //   temporalDeixis = format(date, "'Next' EEEE 'at' hh:mm a");
+      // }
+    } else if (diffDays < -7 && diffDays >= (-7 - now.getDay())) { // Last week
+        temporalDeixis = format(date, "'Last Week' EEEE 'at' hh:mm a");
+    } else if (diffDays > 7 && diffDays <= (7 + (6 - now.getDay()))) { // Next week
+        temporalDeixis = format(date, "'Next Week' EEEE 'at' hh:mm a");
+    } else
+        temporalDeixis = value!;
 
     return temporalDeixis;
   }
