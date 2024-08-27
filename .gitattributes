@@ -1,0 +1,6 @@
+*.ts linguist-language=TypeScript
+*.html linguist-vendored=true
+*.css linguist-vendored=true
+*.scss linguist-vendored=true
+*.min.js linguist-vendored=true
+assets/** linguist-vendored
