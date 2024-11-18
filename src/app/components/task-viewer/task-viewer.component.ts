@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TaskViewerComponent implements OnInit{
   filterAttribute: string = 'completed';
-  filterValue: any = '';
+  filterValue: any = '0';
 
   searchFilter: string = '';
 
