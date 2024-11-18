@@ -38,7 +38,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { TaskTabsComponent } from './components/task-viewer/task-tabs/task-tabs.component';
-import { TaskListComponent } from './components/task-viewer/task-list/task-list/task-list.component';
+import { TaskListComponent } from './components/task-viewer/task-list/task-list.component';
 
 @NgModule({
   declarations: [

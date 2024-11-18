@@ -17,6 +17,8 @@ export class TaskListComponent {
 
   @Output() updateEvent: EventEmitter<Task> = new EventEmitter<Task>();
 
+  editing: boolean = false;
+
   constructor (
     public taskService: TaskService
   ) {}
@@ -26,6 +28,8 @@ export class TaskListComponent {
   }
 
   update(task: Task): void {
+    this.taskService.clearUpdating();
+    this.taskService.setUpdating(task);
     this.updateEvent.emit(task);
   }
 

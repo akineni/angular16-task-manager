@@ -71,7 +71,7 @@ export class TaskEditorComponent {
         const index = this.taskService.tasks.findIndex(task => task.id == this.id);
         this.taskService.tasks[index] = taskUpdate;
         this.clearTask(true);
-      }      
+      }
       this.preLoader.disable();
     },
     () => { // Error

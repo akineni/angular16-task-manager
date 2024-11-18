@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class TaskService {
 
   tasks: Task[];
+  updating: Task = {'task': ''};
 
   constructor(
     private httpClient: HttpClient,
@@ -62,5 +63,11 @@ export class TaskService {
         this.preLoader.disable();
       });
   }
-  
+
+  clearUpdating() { this.updating.updating = false; }
+
+  setUpdating(task: Task) {
+    task.updating = true;
+    this.updating = task;
+  }
 }
