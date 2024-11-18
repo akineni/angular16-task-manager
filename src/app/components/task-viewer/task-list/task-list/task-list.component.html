@@ -1,0 +1,29 @@
+<div class="table-responsive">
+
+    <table class="table table-sm table-striped table-hover align-middle">
+        <tbody>
+        <tr *ngFor="let task of taskService.tasks | orderByImpure: ['completed', '-id'] | filterByImpure: [filterAttribute]: filterValue | search: searchFilter">                    
+            
+            <td>
+                <input class="form-check-input me-2" type="checkbox" value="" aria-label="..."
+                [checked]="task.completed" (change)="updateCompleted(task.id!, $event)" />
+            </td>
+
+            <td>
+                <span [ngClass]="{'text-decoration-line-through': task.completed, 'text-danger': !task.completed && isPast(task.deadline)}">
+                    {{task.task}}
+                </span>
+            </td>
+
+            <td [ngClass]="{'text-danger': !task.completed && isPast(task.deadline)}">{{task.deadline | date: 'E, MMM d, y, h:mm a' | temporalDeixis}}</td>
+            
+            <td class="text-nowrap">
+                <i class="fa-solid fa-pen mx-1" role="button" title="Edit" (click)="update(task)"></i>
+                <i class="fa-solid fa-trash-can mx-1" role="button" title="Delete" (click)="delete(task.id!)"></i>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,41 @@
+<!-- Tabs navs -->
+<ul class="nav nav-tabs nav-fill nav-justified mb-4 pb-2" id="ex1" role="tablist">
+
+    <li class="nav-item" role="presentation" (click)="filterBy('completed', '0')">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == '0'}">
+            Active
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: ['completed']: 0).length}}
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item" role="presentation" (click)="filterBy('completed', '1')">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == '1'}">
+            Completed
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: ['completed']: 1).length}}
+            </span>
+        </a>
+    </li>
+
+    <li class="nav-item" role="presentation" (click)="filterBy()">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterValue == ''}">
+            All
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{taskService.tasks.length}}
+            </span>
+        </a>
+    </li>
+
+    <!-- <li class="nav-item" role="presentation" (click)="filterBy(filterValue === [] ? '' : 'id', getMissedTasks())">
+        <a class="nav-link text-nowrap" role="button" [ngClass]="{'active': filterAttribute == 'id'}">
+            Missed
+            <span class="badge badge-info ms-2" *ngIf="taskService.tasks">
+                {{(taskService.tasks | filterByImpure: [filterValue === [] ? '' : 'id']: getMissedTasks()).length}}
+            </span>
+        </a>
+    </li> -->
+
+</ul>
+<!-- Tabs navs -->
