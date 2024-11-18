@@ -34,6 +34,13 @@ export class AuthService {
       () => { // error
         this.preLoader.disable();
         setTimeout(() => alert('An error occured, please try again'), 500);
+
+        /*
+          SSL certificate error: (This worked for me)
+          GuzzleHttp \ Exception \ RequestException cURL error 60: SSL certificate problem: unable to get local issuer certificate (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)
+          https://laracasts.com/discuss/channels/laravel/guzzlehttp-exception-requestexception-curl-error-60-ssl-certificate-problem-unable-to-get-local-issuer-certificate-see-httpcurlhaxxselibcurlclibcurl-errorshtml
+          https://stackoverflow.com/questions/35638497/curl-error-60-ssl-certificate-prblm-unable-to-get-local-issuer-certificate
+        */
       });
   }
 
