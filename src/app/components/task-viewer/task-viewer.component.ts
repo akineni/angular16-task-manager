@@ -18,8 +18,8 @@ export class TaskViewerComponent implements OnInit{
   filterValue: any = '0';
   searchFilter: string = '';
 
-  @Output()
-  updateEvent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() updateEvent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
 
   private authEventSubscription: Subscription;
   
@@ -36,8 +36,12 @@ export class TaskViewerComponent implements OnInit{
     }
   }
 
-  propagateUpdate(event: Task): void {
-    this.updateEvent.emit(event); // Re-emit the grandchild's event
+  propagateUpward(event: number | Task): void {
+    // Re-emit the grandchild's event
+    if (typeof event == 'number') // Its a delete event
+      this.deleteEvent.emit(event);
+    else
+      this.updateEvent.emit(event);
   }
 
   receiveUpdate(event: string[]): void {

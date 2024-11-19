@@ -16,6 +16,7 @@ export class TaskListComponent {
   @Input() searchFilter: string;
 
   @Output() updateEvent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
 
   editing: boolean = false;
 
@@ -25,6 +26,7 @@ export class TaskListComponent {
 
   delete(taskId: number): void {
     this.taskService.deleteTask(taskId);
+    this.deleteEvent.emit(taskId);
   }
 
   update(task: Task): void {

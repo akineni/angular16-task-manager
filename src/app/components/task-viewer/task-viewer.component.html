@@ -14,8 +14,8 @@
             <h4 class="thin-header text-center my-3">No Task</h4>
         </div>
 
-        <app-task-list (updateEvent)="propagateUpdate($event)" [filterAttribute]="filterAttribute"
-        [filterValue]="filterValue" [searchFilter]="searchFilter"></app-task-list>
+        <app-task-list (updateEvent)="propagateUpward($event)" (deleteEvent)="propagateUpward($event)"
+        [filterAttribute]="filterAttribute" [filterValue]="filterValue" [searchFilter]="searchFilter"></app-task-list>
 
     </div>
 </div>

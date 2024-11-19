@@ -11,7 +11,7 @@
             <app-task-editor (clearTaskEvent)="clearTask()"
               [taskTask]="task.task" [deadline]="task.deadline!"
               [id]="task.id" [completed]="task.completed!"></app-task-editor>
-            <app-task-viewer (updateEvent)="receiveUpdate($event)"></app-task-viewer>
+            <app-task-viewer (updateEvent)="receiveUpdate($event)" (deleteEvent)="receiveDelete($event)"></app-task-viewer>
             <div class="text-end">
               <button class="btn btn-sm btn-outline-danger btn-floating" title="Logout" (click)="signOut()">
                 <i class="fa-solid fa-power-off"></i>

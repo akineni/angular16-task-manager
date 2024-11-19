@@ -21,6 +21,10 @@ export class AppComponent{
     this.task = event;
   }
 
+  receiveDelete(event: number): void {
+    if (this.task.id == event) this.clearTask();
+  }
+
   clearTask(): void {
     this.task = { task: '' };
   }
