@@ -26,7 +26,7 @@ export class AppComponent{
   }
   
   signOut(): void {
+    this.clearTask();
     this.authService.signOut();
   }
-
 }
