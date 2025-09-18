@@ -1,4 +1,4 @@
-::-webkit-calendar-picker-indicator { background-image: url('/assets/images/calendar-alt-solid.svg') }
+::-webkit-calendar-picker-indicator { background-image: url('src/assets/images/calendar-alt-solid.svg') }
 
 ::-webkit-datetime-edit { display: none; }
 .show-datetime-edit::-webkit-datetime-edit { display: initial; }
