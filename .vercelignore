@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules
+bower_components
+
+# Angular cache
+.angular
+
+# Build output (we'll let Vercel rebuild, unless we deploy dist directly)
+dist
+
+# Logs and debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel/other system files
+.vercel
+.git
+.gitignore
