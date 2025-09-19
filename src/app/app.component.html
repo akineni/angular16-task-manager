@@ -7,10 +7,12 @@
             <!-- Primitive values (string, num, boolean, object references) are passed by value (copied),
               objects and arrays are passed by reference (both components get a reference to the same
               object instance). -->
+            <div class="task-editor-wrapper">
               <!-- Task is passed as primitive (by value) -->
-            <app-task-editor (clearTaskEvent)="clearTask()"
-              [taskTask]="task.task" [deadline]="task.deadline!"
-              [id]="task.id" [completed]="task.completed!"></app-task-editor>
+              <app-task-editor (clearTaskEvent)="clearTask()"
+                [taskTask]="task.task" [deadline]="task.deadline!"
+                [id]="task.id" [completed]="task.completed!"></app-task-editor>
+              </div>
             <app-task-viewer (updateEvent)="receiveUpdate($event)" (deleteEvent)="receiveDelete($event)"></app-task-viewer>
             <div class="text-end">
               <button class="btn btn-sm btn-outline-danger btn-floating" title="Logout" (click)="signOut()">

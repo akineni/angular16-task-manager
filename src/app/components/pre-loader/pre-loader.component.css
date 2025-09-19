@@ -87,7 +87,7 @@ opacity: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .6);
     backdrop-filter: blur(1.2px);
-    z-index: 1; /* Make nothing below it clickable */
+    z-index: 2000; /* Make nothing below it clickable */
 }
 
 .lds-message {

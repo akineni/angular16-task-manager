@@ -1,0 +1,8 @@
+.task-editor-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1999;
+    background: white; /* prevent overlap issues */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
