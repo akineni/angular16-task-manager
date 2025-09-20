@@ -1,3 +1,4 @@
+html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .gradient-custom {
     position: fixed;
@@ -41,5 +42,6 @@ body::-webkit-scrollbar-thumb
 @import '@fortawesome/fontawesome-free/css/solid.min.css';
 @import '@fortawesome/fontawesome-free/css/regular.min.css';
 @import '@fortawesome/fontawesome-free/css/brands.min.css';
- 
+
 @import '../src/assets/css/mdb.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

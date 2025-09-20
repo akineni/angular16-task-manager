@@ -7,8 +7,42 @@
     </mdb-form-control>
 
     <div class="flex-grow-1 flex-sm-grow-0 mw-100">
-        <input class="form-control" name="deadline" type="datetime-local" [(ngModel)]="deadline"
-        [class.show-datetime-edit]="deadline">
+        <div class="datepicker-input-wrapper">
+            <input
+                class="form-control"
+                name="deadline"
+                [(ngModel)]="deadline"
+                [class.show-datetime-edit]="deadline"
+                [ngxMatDatetimePicker]="pickerCustomIcon"
+                placeholder="Choose a date"
+                [min]="minDate"
+                [max]="maxDate"
+                readonly
+                (click)="pickerCustomIcon.open()"
+            />
+
+            <ngx-mat-datepicker-toggle
+                matSuffix
+                [for]="pickerCustomIcon"
+                (click)="setDefaultTime()"
+                class="datepicker-toggle"
+            ></ngx-mat-datepicker-toggle>
+        </div>
+
+        <ngx-mat-datetime-picker
+            #pickerCustomIcon
+            [showSeconds]="false"
+            [color]="color"
+            [defaultTime]="defaultTime"
+            (opened)="setDefaultTime()"
+        >
+            <ngx-mat-datepicker-actions>
+            <button mat-button ngxMatDatepickerCancel>Cancel</button>
+            <button mat-raised-button ngxMatDatepickerApply class="apply">
+                Apply
+            </button>
+            </ngx-mat-datepicker-actions>
+        </ngx-mat-datetime-picker>
     </div>
 
     <div mdbDropdown class="btn-group flex-grow-1 flex-md-grow-0">

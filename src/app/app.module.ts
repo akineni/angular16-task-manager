@@ -40,6 +40,20 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { TaskTabsComponent } from './components/task-viewer/task-tabs/task-tabs.component';
 import { TaskListComponent } from './components/task-viewer/task-list/task-list.component';
 
+// Ngx datetime picker
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+
+// Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +75,8 @@ import { TaskListComponent } from './components/task-viewer/task-list/task-list.
     GoogleSigninButtonModule,
     NgArrayPipesModule,
     BrowserAnimationsModule,
+
+    // MDB Angular Free
     // MdbAccordionModule,
     // MdbCarouselModule,
     // MdbCheckboxModule,
@@ -75,7 +91,19 @@ import { TaskListComponent } from './components/task-viewer/task-list/task-list.
     // MdbScrollspyModule,
     // MdbTabsModule,
     // MdbTooltipModule,
-    // MdbValidationModule
+    // MdbValidationModule,
+
+    // Angular Material modules
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
+    // Ngx Datetime picker
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
   ],
   providers: [
     {

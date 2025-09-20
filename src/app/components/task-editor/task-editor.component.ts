@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { PreLoaderService } from 'src/app/services/pre-loader.service';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/types/task.type';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-task-editor',
@@ -9,6 +10,11 @@ import { Task } from 'src/app/types/task.type';
   styleUrls: ['./task-editor.component.css']
 })
 export class TaskEditorComponent {
+  minDate = new Date();
+  maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+  color: ThemePalette = 'primary';
+  defaultTime: number[];
+
   /*
     If we pass objects in @Input() decorator then it would be passed as reference,
     and if we pass primitive types, then it would be passed as value.
@@ -108,5 +114,10 @@ export class TaskEditorComponent {
       this.clearTask(true);
     } else
       this.clearTask();
+  }
+
+  setDefaultTime(): void {
+    const now = new Date();
+    this.defaultTime = [now.getHours(), now.getMinutes(), now.getSeconds()];
   }
  }

@@ -2,3 +2,185 @@
 
 ::-webkit-datetime-edit { display: none; }
 .show-datetime-edit::-webkit-datetime-edit { display: initial; }
+
+.datepicker-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Push input text away from toggle */
+.datepicker-input-wrapper .form-control {
+  padding-right: 2.5rem; /* space for icon */
+}
+
+/* Style and position the toggle */
+.datepicker-input-wrapper .datepicker-toggle {
+  position: absolute;
+  right: 0.5rem; /* adjust spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.datepicker-input-wrapper .datepicker-toggle button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #137697; /* matches your theme */
+  cursor: pointer;
+}
+
+/* ============================
+   MDBootstrap "Info" Theme
+   for @angular-material-components/datetime-picker
+   ============================ */
+
+/* Calendar container */
+::ng-deep .mat-calendar {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Header (month/year bar) */
+::ng-deep .mat-calendar-header {
+  background-color: #137697 !important;
+  color: #fff !important;
+}
+
+/* Period button (month/year selector) */
+::ng-deep .mat-calendar-period-button .mdc-button__label {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+/* Navigation arrows */
+::ng-deep .mat-calendar-previous-button,
+::ng-deep .mat-calendar-next-button {
+  color: #fff !important;
+}
+
+/* Calendar dropdown arrow (month/year toggle) */
+::ng-deep svg.mat-calendar-arrow polygon {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Days grid header (Mon, Tue, etc.) */
+::ng-deep .mat-calendar-table-header {
+  color: #444 !important;
+  font-weight: 500;
+}
+
+/* Default day cells */
+::ng-deep .mat-calendar-body-cell-content {
+  color: #000 !important;
+}
+
+/* Today highlight */
+::ng-deep .mat-calendar-body-today {
+  border-color: #137697 !important;
+}
+
+/* Selected day */
+::ng-deep .mat-calendar-body-selected {
+  background-color: #137697 !important;
+  color: #fff !important;
+}
+
+/* Hover effect */
+::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  .mat-calendar-body-cell-content {
+  background-color: rgba(84,180,211,0.15) !important;
+}
+
+/* Disabled dates */
+::ng-deep .mat-calendar-body-disabled .mat-calendar-body-cell-content {
+  color: #bbb !important;
+}
+
+/* ============================
+   Timepicker Styling
+   ============================ */
+
+/* Clock container */
+::ng-deep .time-container-clock {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Timepicker container */
+::ng-deep .time-container {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+/* Time input fields */
+::ng-deep .time-container .mat-mdc-input-element {
+  background-color: #fff !important;
+  color: #000 !important;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* Timepicker active hand (hour/minute selection) */
+::ng-deep .clock-face__clock-hand {
+  background-color: #137697 !important;
+}
+
+/* ============================
+   Action Buttons (Cancel/Apply)
+   ============================ */
+::ng-deep .mat-datepicker-actions {
+  background-color: #fff !important;
+  padding: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+::ng-deep .mat-datepicker-actions button {
+  color: #000 !important;
+}
+
+::ng-deep .mat-datepicker-actions button.mat-raised-button {
+  background-color: #137697 !important;
+  color: #fff !important;
+}
+
+/* ============================
+   Calendar/Timepicker Container
+   ============================ */
+::ng-deep .mat-datepicker-content {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25),
+              0 4px 12px rgba(0,0,0,0.15) !important;
+  z-index: 2000 !important; /* stay above modals, etc. */
+  overflow: hidden;
+}
+
+/* Apply button */
+::ng-deep .apply.mdc-button--raised {
+  background-color: #137697 !important;
+  color: #fff !important;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 6px 20px;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover state */
+::ng-deep .apply.mdc-button--raised:hover {
+  background-color: #0f5e76 !important; /* darker shade */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
