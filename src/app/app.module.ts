@@ -26,7 +26,7 @@ import { SearchPipe } from './pipes/search.pipe';
 // import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 // import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 // import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-// import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 // import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
@@ -65,7 +65,7 @@ import { TaskListComponent } from './components/task-viewer/task-list/task-list.
     // MdbCarouselModule,
     // MdbCheckboxModule,
     // MdbCollapseModule,
-    // MdbDropdownModule,
+    MdbDropdownModule,
     MdbFormsModule,
     // MdbModalModule,
     // MdbPopoverModule,
