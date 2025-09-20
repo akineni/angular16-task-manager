@@ -22,21 +22,21 @@ import { TaskViewerComponent } from './components/task-viewer/task-viewer.compon
 import { AuthComponent } from './components/auth/auth.component';
 import { TemporalDeixisPipe } from './pipes/temporal-deixis.pipe';
 import { SearchPipe } from './pipes/search.pipe';
-import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+// import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
+// import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
+// import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+// import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+// import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
-import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
-import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
-import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
-import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
-import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+// import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+// import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
+// import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
+// import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
+// import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+// import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
+// import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
+// import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
+// import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { TaskTabsComponent } from './components/task-viewer/task-tabs/task-tabs.component';
 import { TaskListComponent } from './components/task-viewer/task-list/task-list.component';
 
@@ -61,21 +61,21 @@ import { TaskListComponent } from './components/task-viewer/task-list/task-list.
     GoogleSigninButtonModule,
     NgArrayPipesModule,
     BrowserAnimationsModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
+    // MdbAccordionModule,
+    // MdbCarouselModule,
+    // MdbCheckboxModule,
+    // MdbCollapseModule,
+    // MdbDropdownModule,
     MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule
+    // MdbModalModule,
+    // MdbPopoverModule,
+    // MdbRadioModule,
+    // MdbRangeModule,
+    // MdbRippleModule,
+    // MdbScrollspyModule,
+    // MdbTabsModule,
+    // MdbTooltipModule,
+    // MdbValidationModule
   ],
   providers: [
     {
