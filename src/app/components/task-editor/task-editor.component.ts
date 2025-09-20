@@ -3,6 +3,7 @@ import { PreLoaderService } from 'src/app/services/pre-loader.service';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/types/task.type';
 import { ThemePalette } from '@angular/material/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-task-editor',
@@ -88,7 +89,7 @@ export class TaskEditorComponent {
   private createTask(id: number | undefined = undefined, completed: number | boolean | undefined = undefined): Task {
     const task: Task = {
       'task': this.taskTask,
-      'deadline': this.deadline
+      'deadline': moment(this.deadline).format('YYYY-MM-DD HH:mm:ss')
     }
     if(id) task.id = id;
     if(completed !== undefined) task.completed = completed; //!== undefined: completed when false is 0

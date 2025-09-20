@@ -12,6 +12,7 @@
   "dependencies": {
     "@abacritt/angularx-social-login": "^2.1.0",
     "@angular-material-components/datetime-picker": "^16.0.1",
+    "@angular-material-components/moment-adapter": "^16.0.1",
     "@angular/animations": "^16.0.0",
     "@angular/cdk": "^16.0.3",
     "@angular/common": "^16.0.0",
